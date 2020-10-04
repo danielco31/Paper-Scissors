@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        //will randomly return either ‘Rock’, ‘Paper’ or ‘Scissors’
+        function computerPlay() {
+
+            let arrayPsr = ["rock", "scissors", "paper"];
+            let stChoice = arrayPsr[Math.floor(Math.random() * arrayPsr.length)];
+
+            return stChoice;
+
+        }
+
+        //return a string that declares the winner of the round like so: "You Lose! Paper beats Rock"
+        function playRound(playerSelection, computerSelection) {
+
+
+
+            if (playerSelection.toLowerCase() !== "rock" && playerSelection.toLowerCase() !== "paper" && playerSelection
+                .toLowerCase() !== "scissors") {
+                return "Enter a valid Word!";
+            } else if (playerSelection.toLowerCase() === computerSelection) {
+                return "It's a Tie";
+            } else if (playerSelection.toLowerCase() === "scissors" && computerSelection !== "rock") {
+                return "you win";
+            } else if (playerSelection.toLowerCase() === "paper" && computerSelection !== "scissors") {
+                return "you win";
+            } else if (playerSelection.toLowerCase() === "rock" && computerSelection !== "paper") {
+                return "you win";
+            } else {
+                return "Computer win!";
+            }
+
+        }
+
+        function game() {
+            let contadorGeral = 5;
+
+            let contadorPlayer = 0;
+            let contadorComputer = 0;
+
+
+
+            for (let i = 0; i <= contadorGeral; i++) {
+                console.log(`suas vitorias ${contadorPlayer}`);
+                console.log(`vitorias do pc ${contadorComputer}`);
+
+                if (contadorPlayer > contadorComputer && i === 5) {
+                    alert("Voce ganhou!");
+                } else if (contadorPlayer < contadorComputer && i === 5) {
+                    alert("Perdeu!");
+                } else if (contadorPlayer === contadorComputer && i === 5) {
+                    alert("Empate!!");
+                }
+
+                let playerSl = prompt("Escolha Rock, Paper or Scissors");
+                let resultado = playRound(playerSl, computerPlay());
+                console.log(resultado);
+                if (resultado === "you win") {
+                    contadorPlayer++;
+
+                } else if (resultado === "Computer win!") {
+                    contadorComputer++;
+                }
+
+            }
+        }
+
+        game();
+    </script>
+</body>
+
+</html>
